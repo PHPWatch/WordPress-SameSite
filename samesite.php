@@ -169,7 +169,7 @@ endif;
  * @param $value
  * @param array $options
  */
-function _samesite_setcookie($name, $value, array $options) {
+function samesite_setcookie($name, $value, array $options) {
 	$header = 'Set-Cookie:';
 	$header .= rawurlencode($name) . '=' . rawurlencode($value) . ';';
 	$header .= 'expires=' . \gmdate('D, d-M-Y H:i:s T', $options['expires']) . ';';
