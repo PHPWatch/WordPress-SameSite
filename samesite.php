@@ -164,7 +164,7 @@ endif;
 /**
  * @internal Function to mimic setcookie() function behaviour without PHP 7.3 as
  *  as a requirement to set SameSite flag. This function does not handle exceptional
- *  case well (to keep its functionality minimal); Do not use for any other purpose.
+ *  cases well (to keep its functionality minimal); Do not use for any other purpose.
  * @param $name
  * @param $value
  * @param array $options
