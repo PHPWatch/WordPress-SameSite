@@ -1,3 +1,4 @@
+=== SameSite Cookies ===
 Contributors: ayeshrajans
 Tags: security, csrf, cookies
 Requires at least: 4.3
