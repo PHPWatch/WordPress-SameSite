@@ -1,0 +1,25 @@
+{
+	"name": "phpwatch/wordpress-samesite",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"description": "This plugin adds the “SameSite” cookie flag to WordPress’s authentication cookies. On supported browsers (all current IE, Edge, Chrome, and Firefox), this can effectively prevent all Cross-Site Request Forgery attacks throughout your WordPress site.",
+	"homepage": "https://wordpress.org/plugins/samesite/",
+	"authors": [
+			{
+				"name": "Ayesh Karunaratne",
+				"email": "ayesh@ayesh.me",
+				"homepage": "https://ayesh.me"
+			}
+		],
+	"keywords": ["password", "password_hash", "bcrypt", "argon2", "argon2i", "sodium", "password-security", "security", "wordpress", "wordpress-security", "wordpress-plugin"],
+	"support": {
+		"issues": "https://github.com/phpwatch/WordPress-SameSite/issues"
+	},
+	"require": {
+		"php": ">=5.6.0",
+		"composer/installers": "~1.0"
+	},
+	"autoload": {
+	    "files": ["samesite.php"]
+	}
+}
