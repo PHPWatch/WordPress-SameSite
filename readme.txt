@@ -2,7 +2,7 @@
 Contributors: ayeshrajans
 Tags: security, csrf, cookies
 Requires at least: 4.3
-Tested up to: 5.2
+Tested up to: 5.6
 License: GPLv2 or later
 
 CSRF-protection for authentication cookies. When enabled, this plugin makes sure the "SameSite" flag is set in authentication cookies. SameSite flag on a cookie prevents the browser from sending the cookie (thus, the authentication) on Cross-Site requests. This protects users from Cross-Site Request Forgery attacks.
@@ -23,7 +23,7 @@ If you find this plugin useful, I'd appreciate you leaving a review on the plugi
 
 == Frequently Asked Questions ==
 = Do I need to have PHP 7.3 or later? =
-No. PHP 7.3 officially added SameSite cookie support, but this plugin comes with a polyfill to extend support to all previous PHP versions.
+No. [PHP 7.3 officially added SameSite cookie support](https://php.watch/versions/7.3/same-site-cookies), but this plugin comes with a polyfill to extend support to all previous PHP versions.
 
 = Is WordPress vulnerable to CSRF attacks without this plugin? =
 Without SameSite cookie, WordPress core and third party plugins must implement their own CSRF checks, which can be overlooked, [intentionally ignored](https://wordpress.org/plugins/comment-form-csrf-protection/), or sometimes not even have thought about, which can be the case for contributed plugin. This plugin attempts to solve this with  different take and complement existing solutions.
