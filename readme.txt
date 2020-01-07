@@ -1,6 +1,6 @@
 === SameSite Cookies ===
 Contributors: ayeshrajans
-Tags: security, csrf, cookies
+Tags: security, csrf, cookies, samesite
 Requires at least: 4.3
 Tested up to: 5.3
 License: GPLv2 or later
