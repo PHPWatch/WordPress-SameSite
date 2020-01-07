@@ -151,11 +151,11 @@ function wp_set_auth_cookie( $user_id, $remember = false, $secure = '', $token =
 		'samesite' => 'Lax',
 	]; // httponly is added at samesite_setcookie();
 
-	_samesite_setcookie( $auth_cookie_name, $auth_cookie, $base_options + ['secure' => $secure, 'path' => PLUGINS_COOKIE_PATH]);
-	_samesite_setcookie( $auth_cookie_name, $auth_cookie, $base_options + ['secure' => $secure, 'path' => ADMIN_COOKIE_PATH]);
-	_samesite_setcookie( LOGGED_IN_COOKIE, $logged_in_cookie, $base_options + ['secure' => $secure_logged_in_cookie, 'path' => COOKIEPATH]);
+	samesite_setcookie( $auth_cookie_name, $auth_cookie, $base_options + ['secure' => $secure, 'path' => PLUGINS_COOKIE_PATH]);
+	samesite_setcookie( $auth_cookie_name, $auth_cookie, $base_options + ['secure' => $secure, 'path' => ADMIN_COOKIE_PATH]);
+	samesite_setcookie( LOGGED_IN_COOKIE, $logged_in_cookie, $base_options + ['secure' => $secure_logged_in_cookie, 'path' => COOKIEPATH]);
 	if ( COOKIEPATH != SITECOOKIEPATH ) {
-		_samesite_setcookie( LOGGED_IN_COOKIE, $logged_in_cookie, $base_options + ['secure' => $secure_logged_in_cookie, 'path' => SITECOOKIEPATH]);
+		samesite_setcookie( LOGGED_IN_COOKIE, $logged_in_cookie, $base_options + ['secure' => $secure_logged_in_cookie, 'path' => SITECOOKIEPATH]);
 	}
 }
 
