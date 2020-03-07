@@ -2,7 +2,7 @@
 Contributors: ayeshrajans
 Tags: security, csrf, cookies, samesite
 Requires at least: 4.3
-Tested up to: 5.3
+Tested up to: 5.4
 License: GPLv2 or later
 Stable tag: 1.2
 
