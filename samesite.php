@@ -148,7 +148,7 @@ function wp_set_auth_cookie( $user_id, $remember = false, $secure = '', $token =
 		'expires' => $expire,
 		'domain' => COOKIE_DOMAIN,
 		'httponly' => true,
-		'samesite' => 'Lax',
+		'samesite' => defined('WP_SAMESITE_COOKIE') ? WP_SAMESITE_COOKIE : 'Lax',
 	]; // httponly is added at samesite_setcookie();
 
 	samesite_setcookie( $auth_cookie_name, $auth_cookie, $base_options + ['secure' => $secure, 'path' => PLUGINS_COOKIE_PATH]);

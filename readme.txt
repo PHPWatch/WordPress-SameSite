@@ -15,6 +15,16 @@ SameSite cookie flag support was added to PHP on version 7.3, but this plugin sh
 
 There is no administrative UI provided: Activate this plugin and you are all set!
 
+You can configure the SameSite flag value from your WordPress configuration file. You cna pick a value from `Lax` (default), `Strict`, or `None`. You can read about [SameSite cookies here](https://php.watch/articles/PHP-Samesite-cookies).
+
+To configure the `SameSite` flag value, edit your WordPress configuration file (`wp-config.php`), and add the following lines right above `/** Sets up WordPress vars and included files. */`. 
+
+```php
+define( 'WP_SAMESITE_COOKIE', 'Lax' ); // Pick from 'Lax', 'Strict', or 'None'.
+```
+
+Note that only the authentication cookies are affected. Regular cookies that your installed plugins set will **not** be affected, nor provide any meaningful value with `SameSite` flags.
+
 == Installation ==
 1. Install this plugin as you would with any other plugin.
 2. Enable it.
