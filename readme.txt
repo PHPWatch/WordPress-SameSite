@@ -4,7 +4,7 @@ Tags: security, csrf, cookies, samesite
 Requires at least: 4.3
 Tested up to: 5.4
 License: GPLv2 or later
-Stable tag: 1.2
+Stable tag: 1.4
 
 CSRF-protection for authentication cookies. When enabled, this plugin makes sure the "SameSite" flag is set in authentication cookies. SameSite flag on a cookie prevents the browser from sending the cookie (thus, the authentication) on Cross-Site requests. This protects users from Cross-Site Request Forgery attacks.
 
