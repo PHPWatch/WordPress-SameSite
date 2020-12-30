@@ -174,7 +174,7 @@ function samesite_setcookie($name, $value, array $options) {
 	$header .= rawurlencode($name) . '=' . rawurlencode($value) . ';';
 
 	if (!empty($options['expires']) && $options['expires'] > 0) {
-		$header .= 'expires=' . \gmdate('D, d-M-Y H:i:s T', $options['expires']) . ';';
+		$header .= 'expires=' . \gmdate('D, d-M-Y H:i:s T', (int) $options['expires']) . ';';
 		$header .= 'Max-Age=' . max(0, (int) ($options['expires'] - time())) . ';';
 	}
 
