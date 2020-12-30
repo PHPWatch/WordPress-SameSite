@@ -172,8 +172,12 @@ endif;
 function samesite_setcookie($name, $value, array $options) {
 	$header = 'Set-Cookie:';
 	$header .= rawurlencode($name) . '=' . rawurlencode($value) . ';';
-	$header .= 'expires=' . \gmdate('D, d-M-Y H:i:s T', $options['expires']) . ';';
-	$header .= 'Max-Age=' . max(0, (int) ($options['expires'] - time())) . ';';
+
+	if (!empty($options['expires']) && $options['expires'] > 0) {
+		$header .= 'expires=' . \gmdate('D, d-M-Y H:i:s T', $options['expires']) . ';';
+		$header .= 'Max-Age=' . max(0, (int) ($options['expires'] - time())) . ';';
+	}
+
 	$header .= 'path=' . rawurlencode($options['path']). ';';
 	$header .= 'domain=' . rawurlencode($options['domain']) . ';';
 
