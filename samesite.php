@@ -178,7 +178,7 @@ function samesite_setcookie($name, $value, array $options) {
 		$header .= 'Max-Age=' . max(0, (int) ($options['expires'] - time())) . ';';
 	}
 
-	$header .= 'path=' . rawurlencode($options['path']). ';';
+	$header .= 'path=' . $options['path'] . ';';
 	$header .= 'domain=' . rawurlencode($options['domain']) . ';';
 
 	if (!empty($options['secure'])) {
