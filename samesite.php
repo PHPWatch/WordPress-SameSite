@@ -30,7 +30,7 @@ if ( ! function_exists( 'wp_set_auth_cookie' ) ) :
  *                         Default is_ssl().
  * @param string $token    Optional. User's session token to use for this cookie.
  */
-function wp_set_auth_cookie( $user_id, $remember = false, $secure = '', $token = '' ) {
+function wp_set_auth_cookie( int $user_id, bool $remember = false, $secure = '', string $token = '' ) {
 	if ( $remember ) {
 		/**
 		 * Filters the duration of the authentication cookie expiration period.
