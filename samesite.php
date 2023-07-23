@@ -6,7 +6,7 @@
 Plugin Name: SameSite
 Plugin URI: https://wordpress.org/plugins/samesite
 Description: CSRF-protection for authentication cookies. When enabled, this plugin makes sure the "SameSite" flag is set in authentication cookies, which protects users from Cross-Site Request Forgery attacks.
-Version: 2.0
+Version: 2.1
 Author: Ayesh Karunaratne
 Author URI: https://aye.sh/open-source
 License: GPLv2 or later
