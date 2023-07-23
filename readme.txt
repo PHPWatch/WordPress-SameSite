@@ -33,6 +33,17 @@ Note that **only the authentication cookies are affected**. Regular cookies that
 If you find this plugin useful, I'd appreciate you leaving a review on the plugin page.
 
 == Frequently Asked Questions ==
+= The plugin doesn't work !?!? =
+Yeah, probably. This plugin uses what's called "pluggable functions" supported in WordPress to replace `wp_set_auth_cookie` function.
+This means that any other plugin that tampers with the login cookie parameters will override this plugin, and this plugin may not even get a chance to do what it does.
+
+= How do I test if the plugin works =
+Go to the Login page of your WordPress site, and open your browser's development tools. Inspect the HTTP POST request made by the browser when you submit the login form. The response headers for `Setcookie` response headers must contain `Samesite=Lax` (or the configured value) if the plugin is working.
+
+Note that cookies apart from the authentication cookies are **not** handled by this plugin, nor it makes sense to add SameSite attribute to them.
+
+See the screenshot as well.
+
 = Do I need to have PHP 7.3 or later? =
 No. [PHP 7.3 officially added SameSite cookie support](https://php.watch/versions/7.3/same-site-cookies), but this plugin comes with a polyfill to extend support to all previous PHP versions.
 
@@ -40,7 +51,15 @@ No. [PHP 7.3 officially added SameSite cookie support](https://php.watch/version
 Without SameSite cookie, WordPress core and third party plugins must implement their own CSRF checks, which can be overlooked, [intentionally ignored](https://wordpress.org/plugins/comment-form-csrf-protection/), or sometimes not even have thought about, which can be the case for contributed plugin. This plugin attempts to solve this with  different take and complement existing solutions.
 
 
+== Screenshots ==
+
+1. Browser response containing the SameSite attribute in Setcookie headers.
+
 == Changelog ==
 
 = 1.5 =
 * Fixes a cookie expiration issue that was reported multiple times in the issue queue. Thanks to Jamie Magin (@jamagin at GitHub).
+
+= 2.0 =
+* Requires PHP 7.0+
+* Synced pluggable code from upstream for better compatibility with hooks.
