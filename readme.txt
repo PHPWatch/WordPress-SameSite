@@ -20,9 +20,7 @@ You can configure the SameSite flag value from your WordPress configuration file
 
 To configure the `SameSite` flag value, edit your WordPress configuration file (`wp-config.php`), and add the following lines right above `/** Sets up WordPress vars and included files. */`. 
 
-```php
-define( 'WP_SAMESITE_COOKIE', 'Lax' ); // Pick from 'Lax', 'Strict', or 'None'.
-```
+`define( 'WP_SAMESITE_COOKIE', 'Lax' ); // Pick from 'Lax', 'Strict', or 'None'.`
 
 Note that **only the authentication cookies are affected**. Regular cookies that your installed plugins set will **not** be affected, nor provide any meaningful value with `SameSite` flags.
 
@@ -63,4 +61,5 @@ Without SameSite cookie, WordPress core and third party plugins must implement t
 
 = 2.0 =
 * Requires PHP 7.0+
+* Requires WordPress 6.2+
 * Synced pluggable code from upstream for better compatibility with hooks.
