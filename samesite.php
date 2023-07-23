@@ -58,11 +58,11 @@ function wp_set_auth_cookie( $user_id, $remember = false, $secure = '', $token =
 		$secure = is_ssl();
 	}
 
-	// Front-end cookie is secure when the auth cookie is secure and the site's home URL is forced HTTPS.
+	// Front-end cookie is secure when the auth cookie is secure and the site's home URL uses HTTPS.
 	$secure_logged_in_cookie = $secure && 'https' === parse_url( get_option( 'home' ), PHP_URL_SCHEME );
 
 	/**
-	 * Filters whether the connection is secure.
+	 * Filters whether the logged in cookie should only be sent over HTTPS.
 	 *
 	 * @since 3.1.0
 	 *
@@ -76,9 +76,9 @@ function wp_set_auth_cookie( $user_id, $remember = false, $secure = '', $token =
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param bool $secure_logged_in_cookie Whether to use a secure cookie when logged-in.
+	 * @param bool $secure_logged_in_cookie Whether the logged in cookie should only be sent over HTTPS.
 	 * @param int  $user_id                 User ID.
-	 * @param bool $secure                  Whether the connection is secure.
+	 * @param bool $secure                  Whether the auth cookie should only be sent over HTTPS.
 	 */
 	$secure_logged_in_cookie = apply_filters( 'secure_logged_in_cookie', $secure_logged_in_cookie, $user_id, $secure );
 
@@ -136,10 +136,19 @@ function wp_set_auth_cookie( $user_id, $remember = false, $secure = '', $token =
 	 * Allows preventing auth cookies from actually being sent to the client.
 	 *
 	 * @since 4.7.4
+	 * @since 6.2.0 The `$expire`, `$expiration`, `$user_id`, `$scheme`, and `$token` parameters were added.
 	 *
-	 * @param bool $send Whether to send auth cookies to the client.
+	 * @param bool   $send       Whether to send auth cookies to the client. Default true.
+	 * @param int    $expire     The time the login grace period expires as a UNIX timestamp.
+	 *                           Default is 12 hours past the cookie's expiration time. Zero when clearing cookies.
+	 * @param int    $expiration The time when the logged-in authentication cookie expires as a UNIX timestamp.
+	 *                           Default is 14 days from now. Zero when clearing cookies.
+	 * @param int    $user_id    User ID. Zero when clearing cookies.
+	 * @param string $scheme     Authentication scheme. Values include 'auth' or 'secure_auth'.
+	 *                           Empty string when clearing cookies.
+	 * @param string $token      User's session token to use for this cookie. Empty string when clearing cookies.
 	 */
-	if ( ! apply_filters( 'send_auth_cookies', true ) ) {
+	if ( ! apply_filters( 'send_auth_cookies', true, $expire, $expiration, $user_id, $scheme, $token ) ) {
 		return;
 	}
 
